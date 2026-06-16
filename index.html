@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>postal.hapicode.com — 郵便番号 API</title>
+    <meta
+      name="description"
+      content="日本の郵便番号から住所を検索できる静的 JSON API"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+      }
+      body {
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      code {
+        font-size: 0.95em;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>postal.hapicode.com</h1>
+    <p>日本の郵便番号から住所を検索できる、認証不要の静的 JSON API です。</p>
+
+    <h2>エンドポイント</h2>
+    <ul>
+      <li><a href="/api/index.json">API メタ情報</a> — <code>/api/index.json</code></li>
+      <li>
+        郵便番号検索 — <code>/api/v1/{上3桁}/{下4桁}.json</code>
+        （例: <a href="/api/v1/060/0000.json">060-0000</a>）
+      </li>
+      <li>
+        都道府県一覧 — <a href="/api/v1/regions/index.json"
+          ><code>/api/v1/regions/index.json</code></a
+        >
+      </li>
+    </ul>
+
+    <p>
+      詳細は
+      <a href="https://github.com/camelG/postal.hapicode.com">GitHub</a>
+      の README を参照してください。
+    </p>
+  </body>
+</html>
