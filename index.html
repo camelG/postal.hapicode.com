@@ -3,11 +3,95 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>postal.hapicode.com — 郵便番号 API ドキュメント</title>
+    <title>郵便番号API（無料）| postal.hapicode.com — 認証不要の住所検索 JSON API</title>
     <meta
       name="description"
-      content="日本の郵便番号から住所を検索できる静的 JSON API。認証不要・CORS 対応。エンドポイント仕様と利用例を掲載。"
+      content="日本の郵便番号から都道府県・市区町村・町域を取得できる無料の静的 JSON API。API キー不要・CORS 対応・毎日自動更新。fetch で今すぐ試せるドキュメント付き。"
     />
+    <meta
+      name="keywords"
+      content="郵便番号API,郵便番号検索,住所検索API,zipcode API,日本郵便,無料API,CORS,JSON API,postal code"
+    />
+    <meta name="author" content="hapicode" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#60a5fa" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href="https://postal.hapicode.com/" />
+    <link rel="alternate" hreflang="ja" href="https://postal.hapicode.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="postal.hapicode.com" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:url" content="https://postal.hapicode.com/" />
+    <meta
+      property="og:title"
+      content="郵便番号API（無料）| postal.hapicode.com — 認証不要の住所検索 JSON API"
+    />
+    <meta
+      property="og:description"
+      content="日本の郵便番号から都道府県・市区町村・町域を取得できる無料の静的 JSON API。API キー不要・CORS 対応・毎日自動更新。"
+    />
+
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="郵便番号API（無料）| postal.hapicode.com"
+    />
+    <meta
+      name="twitter:description"
+      content="認証不要・CORS 対応の日本郵便番号検索 API。静的 JSON で住所（都道府県・市区町村・町域）を取得できます。"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://postal.hapicode.com/#website",
+            "url": "https://postal.hapicode.com/",
+            "name": "postal.hapicode.com",
+            "description": "日本の郵便番号から住所を検索できる無料の静的 JSON API",
+            "inLanguage": "ja"
+          },
+          {
+            "@type": "WebAPI",
+            "@id": "https://postal.hapicode.com/#api",
+            "name": "postal.hapicode.com 郵便番号 API",
+            "url": "https://postal.hapicode.com/",
+            "description": "7 桁の郵便番号から都道府県・市区町村・町域を返す REST 風 JSON API。認証不要・CORS 対応。",
+            "documentation": "https://postal.hapicode.com/",
+            "termsOfService": "https://www.post.japanpost.jp/zipcode/dl/readme.html",
+            "provider": {
+              "@type": "Organization",
+              "name": "hapicode",
+              "url": "https://hapicode.com/"
+            },
+            "isAccessibleForFree": true,
+            "dateModified": "2026-06-30T17:05:56.122Z"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "postal.hapicode.com",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "JPY"
+            },
+            "featureList": [
+              "郵便番号から住所検索",
+              "認証不要",
+              "CORS 対応",
+              "都道府県・市区町村 API",
+              "毎日自動更新"
+            ]
+          }
+        ]
+      }
+    </script>
     <style>
       :root {
         color-scheme: light dark;
@@ -400,11 +484,11 @@
 
       <main class="content">
         <header class="hero" id="overview">
-          <h1>郵便番号 API ドキュメント</h1>
+          <h1>郵便番号 API — 無料の日本郵便番号・住所検索</h1>
           <p>
-            日本の郵便番号から住所（都道府県・市区町村・町域）を取得できる、認証不要の静的
-            JSON API です。GitHub Pages 上で配信され、ブラウザやサーバーからそのまま
-            <code>fetch</code> できます。
+            <strong>postal.hapicode.com</strong> は、日本の郵便番号（7 桁）から住所（都道府県・市区町村・町域）を取得できる、<strong>認証不要・API キー不要</strong>の静的
+            JSON API です。フロントエンド向けに <strong>CORS 対応</strong>しており、GitHub Pages 上で配信されるためブラウザやサーバーからそのまま
+            <code>fetch</code> できます。日本郵便の公開データを元に<strong>毎日自動更新</strong>されます。
           </p>
           <div class="badges">
             <span class="badge"
@@ -660,10 +744,10 @@ const url = `/api/v1/${zip.slice(0, 3)}/${zip.slice(3)}.json`;
           </p>
           <pre><code>{
   "version": 6,
-  "updatedAt": "2026-06-29T17:34:55.273Z",
+  "updatedAt": "2026-06-30T17:05:56.122Z",
   "source": "https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip",
-  "recordCount": 124825,
-  "zipcodeCount": 120680,
+  "recordCount": 124827,
+  "zipcodeCount": 120682,
   "normalization": {
     "town": "remove_parentheses"
   },
@@ -671,7 +755,7 @@ const url = `/api/v1/${zip.slice(0, 3)}/${zip.slice(3)}.json`;
   "lookupPath": "/api/v1/{prefix3}/{suffix4}.json",
   "stats": {
     "prefix3Dirs": 948,
-    "shardFiles": 120680
+    "shardFiles": 120682
   },
   "apis": {
     "zipLookup": "/api/v1/{prefix3}/{suffix4}.json",
@@ -728,7 +812,7 @@ const url = `/api/v1/${zip.slice(0, 3)}/${zip.slice(3)}.json`;
             >
           </p>
           <pre><code>{
-  "updatedAt": "2026-06-29T17:34:55.273Z",
+  "updatedAt": "2026-06-30T17:05:56.122Z",
   "prefectures": [
     {
       "name": "愛知県",
@@ -814,7 +898,7 @@ curl -s https://postal.hapicode.com/api/v1/regions/index.json</code></pre>
               の GitHub Actions により自動生成・デプロイ
             </li>
             <li>
-              <strong>件数:</strong> 120,680 件の郵便番号（<code>zipcodeCount</code>）、948
+              <strong>件数:</strong> 120,682 件の郵便番号（<code>zipcodeCount</code>）、948
               ディレクトリ（上 3 桁）
             </li>
             <li>
